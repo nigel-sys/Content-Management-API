@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - main
+      - dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        stage: [dev, prod]
 
     steps:
       # Step 1: Checkout the code
@@ -40,5 +45,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.REGION }}
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+          STAGE: ${{ matrix.stage }}
         run: |
-          npx serverless deploy --stage dev
+          npx serverless deploy --stage $STAGE
+          if: (github.ref == 'refs/heads/main' && matrix.stage == 'prod') || (github.ref == 'refs/heads/dev' && matrix.stage == 'dev')
