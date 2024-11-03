@@ -8,6 +8,15 @@ service: content-management-api
 provider:
   name: aws
   runtime: nodejs20.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem       
+        - dynamodb:GetItem      
+        - dynamodb:UpdateItem    
+        - dynamodb:DeleteItem    
+      Resource:
+        - !GetAtt PostsTable.Arn
   stage: ${opt:stage, 'dev'}  # Default to 'dev' if no stage is specified
   region: us-east-1
   environment:
