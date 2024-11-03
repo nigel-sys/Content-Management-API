@@ -12,16 +12,11 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:PutItem       
-        - dynamodb:GetItem      
+        - dynamodb:GetItem       
         - dynamodb:UpdateItem    
         - dynamodb:DeleteItem    
       Resource:
-        - !GetAtt PostsTable.Arn
-  stage: ${opt:stage, 'dev'}  # Default to 'dev' if no stage is specified
-  region: us-east-1
-  environment:
-    POSTS_TABLE: ${self:service}-${self:provider.stage}-PostsTable  # Setting environment variable for the DynamoDB table name
-
+        - arn:aws:dynamodb:us-east-1:220248621137:table/content-management-api-dev-PostsTable
 
 functions:
   createPost:
@@ -53,7 +48,7 @@ resources:
     PostsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:provider.environment.POSTS_TABLE}  # Using the environment variable for the table name
+        TableName: content-management-api-dev-PostsTable
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S

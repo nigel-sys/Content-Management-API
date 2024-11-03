@@ -1,36 +1,44 @@
-name: Deploy Serverless Application
+name: Deploy Serverless API
 
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch (prod)
-      - dev    # Trigger on pushes to the dev branch
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        stage: [dev, prod]  # Define the stages for the deployment
-
     steps:
+      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Cache Node Modules (optional but recommended)
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Step 3: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      # Step 4: Install Dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Deploy to Serverless
-        env: 
-          ${{ secrets.AWS_ACCESS_KEY_ID }}
-          ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
-          ${{ secrets.SERVERLESS_ACCESS_KEY }}
-          ${{ secrets.REGION }}
-        run: npx serverless deploy --stage ${{ matrix.stage }}  # Deploy to the corresponding stage
-        if: github.ref == 'refs/heads/${{ matrix.stage }}'  # Only run when pushing to the corresponding branch
+      # Step 5: Deploy with Serverless CLI
+      - name: Deploy with Serverless
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.REGION }}
+          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+        run: |
+          npx serverless deploy --stage dev
