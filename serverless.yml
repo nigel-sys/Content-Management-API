@@ -9,7 +9,7 @@ provider:
   name: aws
   runtime: nodejs20.x
   environment:
-    POSTS_TABLE: ${self:custom.tableName}
+    POSTS_TABLE: content-management-api-dev-PostsTable
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -18,7 +18,7 @@ provider:
         - dynamodb:UpdateItem    
         - dynamodb:DeleteItem    
       Resource:
-        - arn:aws:dynamodb:us-east-1:220248621137:table/${self:custom.tableName}
+        - arn:aws:dynamodb:us-east-1:220248621137:table/content-management-api-dev-PostsTable
 
 functions:
   createPost:
@@ -50,7 +50,7 @@ resources:
     PostsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:custom.tableName}
+        TableName: content-management-api-dev-PostsTable
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
