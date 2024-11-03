@@ -59,5 +59,5 @@ resources:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
 
-plugins:
-  - serverless-offline
+#plugins:
+#  - serverless-offline
