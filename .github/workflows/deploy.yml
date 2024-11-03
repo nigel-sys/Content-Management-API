@@ -34,6 +34,6 @@ jobs:
           aws-region: ${{ secrets.REGION }}
 
       - name: Deploy to Serverless
-        run:  ${{ secrets.SERVERLESS_ACCESS_KEY }}
+        env:  ${{ secrets.SERVERLESS_ACCESS_KEY }}
         run: npx serverless deploy --stage ${{ matrix.stage }}  # Deploy to the corresponding stage
         if: github.ref == 'refs/heads/${{ matrix.stage }}'  # Only run when pushing to the corresponding branch
