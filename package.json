@@ -1,0 +1,16 @@
+{
+    "name": "content-management-api",
+    "version": "1.0.0",
+    "description": "A Serverless API for content management",
+    "main": "handler.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "aws-sdk": "^2.1396.0",
+        "dotenv": "^16.4.5",
+        "uuid": "^9.0.0"
+    }
+}

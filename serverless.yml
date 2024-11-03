@@ -1,0 +1,63 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: nigel79
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: container-management-api
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: content-management-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem       
+        - dynamodb:GetItem       
+        - dynamodb:UpdateItem    
+        - dynamodb:DeleteItem    
+      Resource:
+        - arn:aws:dynamodb:us-east-1:220248621137:table/content-management-api-dev-PostsTable
+
+functions:
+  createPost:
+    handler: createPost.handler
+    events:
+      - httpApi:
+          path: /posts
+          method: post
+  getPost:
+    handler: getPost.handler
+    events:
+      - httpApi:
+          path: /posts/{id}
+          method: get
+  updatePost:
+    handler: updatePost.handler
+    events:
+      - httpApi:
+          path: /posts/{id}
+          method: put
+  deletePost:
+    handler: deletePost.handler
+    events:
+      - httpApi:
+          path: /posts/{id}
+          method: delete
+resources:
+  Resources:
+    PostsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: content-management-api-dev-PostsTable
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
+plugins:
+  - serverless-offline
