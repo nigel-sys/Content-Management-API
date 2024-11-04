@@ -1,6 +1,7 @@
+process.env.POSTS_TABLE = 'TestTable';
 const AWS = require('aws-sdk-mock');
 const { handler } = require('../updatePost'); 
-process.env.POSTS_TABLE = 'TestTable';
+
 
 
 describe("updatePost Lambda Function", () => {

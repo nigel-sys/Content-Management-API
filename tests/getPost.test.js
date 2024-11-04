@@ -1,6 +1,7 @@
+process.env.POSTS_TABLE = 'TestTable';
 const AWS = require('aws-sdk-mock');
 const { handler } = require('../getPost'); 
-process.env.POSTS_TABLE = 'TestTable';
+
 
 
 describe("getPost Lambda Function", () => {
