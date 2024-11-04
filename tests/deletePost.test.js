@@ -1,5 +1,7 @@
 const AWS = require('aws-sdk-mock');
 const { handler } = require('../deletePost'); 
+process.env.POSTS_TABLE = 'TestTable';
+
 
 describe("deletePost Lambda Function", () => {
   beforeAll(() => {

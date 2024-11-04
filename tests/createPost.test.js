@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk-mock');
 const { handler } = require('../createPost');
+process.env.POSTS_TABLE = 'TestTable';
 
 describe("createPost Lambda Function", () => {
   beforeAll(() => {
