@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - production  
 
 jobs:
   deploy:
@@ -33,12 +34,21 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Step 5: Deploy with Serverless CLI
+      # Step 5: Determine the Deployment Stage Based on the Branch
+      - name: Set Stage
+        id: setstage
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "stage=dev" >> $GITHUB_ENV
+          elif [[ "${{ github.ref }}" == "refs/heads/production" ]]; then
+            echo "stage=prod" >> $GITHUB_ENV
+          fi
+
+      # Step 6: Deploy with Serverless CLI
       - name: Deploy with Serverless
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.REGION }}
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         run: |
-          npx serverless deploy --stage dev
+          npx serverless deploy --stage ${{ env.stage }}
