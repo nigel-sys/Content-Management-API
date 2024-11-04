@@ -1,4 +1,5 @@
 process.env.POSTS_TABLE = 'TestTable';
+process.env.AWS_REGION = 'us-east-1'; 
 const AWS = require('aws-sdk-mock');
 const { handler } = require('../deletePost'); 
 
