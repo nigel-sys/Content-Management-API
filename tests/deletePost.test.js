@@ -17,6 +17,15 @@ describe("deletePost Lambda Function", () => {
         callback(new Error("Post not found"));
       }
     });
+
+    // Mock AWS config for credentials
+    AWS.config.update({
+      credentials: {
+        accessKeyId: 'fakeAccessKeyId',
+        secretAccessKey: 'fakeSecretAccessKey',
+      },
+    });
+
   });
 
   afterAll(() => {

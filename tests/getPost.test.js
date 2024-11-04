@@ -24,6 +24,13 @@ describe("getPost Lambda Function", () => {
         callback(null, {});
       }
     });
+    // Mock AWS config for credentials
+    AWS.config.update({
+      credentials: {
+        accessKeyId: 'fakeAccessKeyId',
+        secretAccessKey: 'fakeSecretAccessKey',
+      },
+    });
   });
 
   afterAll(() => {

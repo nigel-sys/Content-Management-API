@@ -10,6 +10,15 @@ describe("createPost Lambda Function", () => {
     AWS.mock("DynamoDB.DocumentClient", "put", (params, callback) => {
       callback(null, { success: true });
     });
+    
+    // Mock AWS config for credentials
+    AWS.config.update({
+      credentials: {
+        accessKeyId: 'fakeAccessKeyId',
+        secretAccessKey: 'fakeSecretAccessKey',
+      },
+    });
+
   });
 
   afterAll(() => {
