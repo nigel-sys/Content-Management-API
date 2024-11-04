@@ -3,9 +3,6 @@
     "version": "1.0.0",
     "description": "A Serverless API for content management",
     "main": "handler.js",
-    "scripts": {
-        "test": "jest"
-    },
     "author": "",
     "license": "ISC",
     "dependencies": {
