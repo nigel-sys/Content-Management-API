@@ -1,5 +1,8 @@
 process.env.POSTS_TABLE = 'TestTable';
 process.env.AWS_REGION = 'us-east-1'; 
+process.env.AWS_ACCESS_KEY_ID = 'fakeAccessKeyId';
+process.env.AWS_SECRET_ACCESS_KEY = 'fakeSecretAccessKey';
+ 
 const AWS = require('aws-sdk-mock');
 const { handler } = require('../deletePost'); 
 
@@ -17,15 +20,6 @@ describe("deletePost Lambda Function", () => {
         callback(new Error("Post not found"));
       }
     });
-
-    // Mock AWS config for credentials
-    AWS.config.update({
-      credentials: {
-        accessKeyId: 'fakeAccessKeyId',
-        secretAccessKey: 'fakeSecretAccessKey',
-      },
-    });
-
   });
 
   afterAll(() => {
