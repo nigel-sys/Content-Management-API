@@ -15,7 +15,6 @@ This project is a RESTful API for managing posts, built using Node.js and AWS Dy
 * [Deployment](#deployment)
     * [CI/CD Setup](#cicd-setup)
 * [Testing](#testing)
-* [Contributing](#contributing)
 * [License](#license)
 
 ## Overview
@@ -63,7 +62,6 @@ The Content Management API allows users to create, read, update, and delete post
 git clone [https://github.com/yourusername/content-management-api.git](https://github.com/yourusername/content-management-api.git)
 cd content-management-api
 ```
-
 2. Install dependencies:
 ```bash
 npm install
@@ -75,6 +73,12 @@ aws configure
 ### Running Locally
 
 To run the API on your local machine, use the Serverless Offline plugin:
+-On the 'serverless.yml' file add:
+```bash
+plugins:
+  - serverless-offline
+```
+-In your project root run: 
 ```bash
 npx serverless offline
 ```
