@@ -133,10 +133,6 @@ To run tests on your local machine, make sure you have a testing framework set u
 npm test
 ```
 
-## Contributing
-
-Contributions are welcome! Please check the [CONTRIBUTING.md](CONTRIBUTING.md) file for details on our code of conduct and how to submit pull requests.
-
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. 
