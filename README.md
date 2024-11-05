@@ -59,24 +59,25 @@ The Content Management API allows users to create, read, update, and delete post
 
 1. Clone the repository:
 
-   ```bash
-   git clone [https://github.com/yourusername/content-management-api.git](https://github.com/yourusername/content-management-api.git)
-   cd content-management-api
+```bash
+git clone [https://github.com/yourusername/content-management-api.git](https://github.com/yourusername/content-management-api.git)
+cd content-management-api
+```
 
 2. Install dependencies:
-
-`npm install`
-
+```bash
+npm install
+```
 3. Set up your AWS credentials (this is optional for local testing):
-
-`aws configure`
-
+```bash
+aws configure
+```
 ### Running Locally
 
 To run the API on your local machine, use the Serverless Offline plugin:
-
-`npx serverless offline`
-
+```bash
+npx serverless offline
+```
 Your API will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment
@@ -93,6 +94,7 @@ To deploy the API to AWS, follow these steps:
 
 ```bash
 npx serverless deploy --stage dev
+```
 
 ## CI/CD Setup
 
@@ -110,8 +112,9 @@ This project uses GitHub Actions for continuous integration and deployment. The 
 ## Testing
 
 To run tests on your local machine, make sure you have a testing framework set up (like Jest or Mocha). You can run tests using:
-
-`npm test`
+```bash
+npm test
+```
 
 ## Contributing
 
