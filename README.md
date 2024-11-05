@@ -109,6 +109,23 @@ This project uses GitHub Actions for continuous integration and deployment. The 
 - **Determine Deployment Stage**: Figure out the deployment stage based on the branch being pushed.
 - **Deploy with Serverless**: Use the Serverless Framework to deploy the API to AWS.
 
+## CI/CD Process Screenshots
+
+Here are some screenshots demonstrating the CI/CD process:
+
+### GitHub Actions Workflow
+
+![GitHub Actions Workflow](screenshots/github-actions-workflow.png)
+
+### Successful Deployment
+
+![Successful Deployment](screenshots/successful-deployment.png)
+
+### CI/CD Logs
+
+![CI/CD Logs](screenshots/cicd-logs.png)
+
+
 ## Testing
 
 To run tests on your local machine, make sure you have a testing framework set up (like Jest or Mocha). You can run tests using:
