@@ -83,10 +83,16 @@ Your API will be available at [http://localhost:3000](http://localhost:3000).
 
 To deploy the API to AWS, follow these steps:
 
-1. Make sure you have the right AWS credentials set up.
-2. Use the Serverless Framework to deploy the API:
+- Ensure you have the necessary AWS credentials configured in your environment.
+- Add your AWS access key and secret key, as well as your Serverless Framework access credentials, to       GitHub Secrets. You can do this by navigating to your GitHub repository, clicking on **Settings**, then **Secrets and variables**, and finally **Actions**. 
+- Create the following secrets:
+  - `AWS_ACCESS_KEY_ID`: Your AWS access key ID
+  - `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key
+  - `SERVERLESS_ACCESS_KEY`: Your Serverless Framework access key (if required)
+- Use the Serverless Framework to deploy the API:
 
-`npm serverless deploy --stage dev`
+```bash
+npx serverless deploy --stage dev
 
 ## CI/CD Setup
 
