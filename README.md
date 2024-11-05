@@ -128,9 +128,9 @@ Here are some screenshots demonstrating the CI/CD process:
 
 ## Testing
 
-To run tests on your local machine, make sure you have a testing framework set up (like Jest or Mocha). You can run tests using:
+To run tests on your local machine, make sure you have a testing framework set up like Jest or Mocha (the project has already set-up with jest testing framework). You can run tests using:
 ```bash
-npm test
+npx jest
 ```
 
 ## License
