@@ -59,8 +59,8 @@ The Content Management API allows users to create, read, update, and delete post
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/yourusername/content-management-api.git](https://github.com/yourusername/content-management-api.git)
-cd content-management-api
+git clone https://github.com/yourusername/Content-Management-API.git
+cd Content-Management-API
 ```
 2. Install dependencies:
 ```bash
@@ -80,7 +80,7 @@ plugins:
 ```
 -In your project root run: 
 ```bash
-npx serverless offline
+npm serverless offline
 ```
 Your API will be available at [http://localhost:3000](http://localhost:3000).
 
@@ -97,7 +97,7 @@ To deploy the API to AWS, follow these steps:
 - Use the Serverless Framework to deploy the API:
 
 ```bash
-npx serverless deploy --stage dev
+npm serverless deploy --stage dev
 ```
 
 ## CI/CD Setup
